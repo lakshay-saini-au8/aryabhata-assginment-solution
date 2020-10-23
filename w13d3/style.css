@@ -1,0 +1,36 @@
+.parent {
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  clip-path: polygon(
+    20% 0%,
+    0% 20%,
+    69% 17%,
+    0% 80%,
+    20% 100%,
+    50% 70%,
+    80% 100%,
+    100% 80%,
+    46% 70%,
+    100% 20%,
+    80% 0%,
+    50% 0
+  );
+}
+img {
+  width: 100%;
+  width: 300px;
+  height: 300px;
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+}
+img:hover {
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+}

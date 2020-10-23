@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box; */
+  margin: 0;
+  padding: 0;
+}
+.header {
+  background-color: red;
+  height: 100px;
+}
+.section {
+  display: flex;
+  background-color: yellow;
+  padding: 20px;
+}
+.nav {
+  background-color: aquamarine;
+  flex-grow: 2;
+}
+.article {
+  background-color: blue;
+  flex-grow: 14;
+}
+.aside {
+  background-color: blueviolet;
+  flex-grow: 2;
+}
+.footer {
+  background-color: brown;
+  height: 100px;
+}
