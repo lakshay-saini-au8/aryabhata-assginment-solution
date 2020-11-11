@@ -1,18 +1,21 @@
 class Fruit {
-  constructor(name, color, count, place) {
+  constructor(name, color, count) {
     this.name = name;
     this.color = color;
     this.count = count;
-    this.place = place;
   }
-  #getPlace() {
-    return this.place;
-  }
-  getPlaceWithData() {
-    return this.#getPlace();
+  total() {
+    return this.count;
   }
 }
 
-const newObj = new Fruit("Apple", "Red", "10", "Haldwani");
-// console.log(newObj);
-console.log(newObj.getPlace());
+class Apple extends Fruit {
+  constructor(name, color, count, taste, orginPlace) {
+    super(name, color, count);
+    this.taste = taste;
+    this.orginPlace = orginPlace;
+  }
+}
+
+const newObj = new Apple("Apple", "Red", "10", "sweet", "Roorkee");
+console.log(newObj.total());
