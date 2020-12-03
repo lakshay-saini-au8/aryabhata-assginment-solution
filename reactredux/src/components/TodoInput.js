@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import { connect } from "react-redux";
 import { addTask } from "../redux/action/todo";
 const TodoInput = ({ addTask }) => {
@@ -9,11 +8,7 @@ const TodoInput = ({ addTask }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const data = {
-      id: uuidv4(),
-      title: title,
-    };
-    addTask(data);
+    addTask(title);
     setTitle("");
   };
   return (
