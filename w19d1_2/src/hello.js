@@ -1,6 +1,5 @@
-// export const hello = () => {
-//   console.log("Hello");
-// };
-// const hello = () => console.log("hello");
+const hello = () => {
+  console.log("Hello");
+};
 
-// export default hello;
+export default hello;
