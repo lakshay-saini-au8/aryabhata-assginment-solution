@@ -1,73 +1,37 @@
-import React from "react";
+import React, { Component } from "react";
 
-class App extends React.Component {
-  state = { data: null, convert: null, amount: "", result: 0 };
-  handleSelect = (e) => {
-    if (e.target.value !== "") {
-      fetch(`https://api.exchangeratesapi.io/latest?base=${e.target.value}`)
-        .then((res) => res.json())
-        .then((res) =>
-          this.setState((prevState) => {
-            return { ...prevState, data: res.rates };
-          })
-        );
-    } else {
-      this.setState((prevState) => {
-        return { ...prevState, data: null };
-      });
-    }
-  };
-  handleSelect2 = (e) => {
-    this.setState((prevState) => {
-      return { ...prevState, convert: e.target.value };
-    });
-  };
-  handleInput = (e) => {
-    this.setState((prevState) => {
-      return { ...prevState, amount: e.target.value };
-    });
-  };
+class App extends Component {
+  state = { currentDate: null, imgUrl: null };
 
-  onSubmitChange = (e) => {
+  handelchange = (e) => {
     e.preventDefault();
-    let converted =
-      parseInt(this.state.data[this.state.convert]) *
-      parseInt(this.state.amount);
-    this.setState((prevState) => {
-      return { ...prevState, result: converted };
-    });
-    console.log(parseInt("10"));
+    const api = async (data) => {
+      const img = await fetch(
+        `https://api.nasa.gov/planetary/apod?api_key=ri0EZkle2DPanZWtyS8oZFgC4coub86CDtV5OiYV&date=${data}`
+      );
+      const { url } = await img.json();
+      this.setState((prev) => ({ ...prev, imgUrl: url }));
+    };
+    api(e.target.value);
+    this.setState((prev) => ({ ...prev, currentDate: e.target.value }));
   };
 
   render() {
     return (
-      <div className="App">
-        <form onSubmit={this.onSubmitChange}>
-          <select onChange={this.handleSelect}>
+      <>
+        <form>
+          {/* <select onChange={this.handleSelect}>
             <option value="" defaultValue>
               Select Option
             </option>
             <option value="USD"> USD</option>
             <option value="INR"> IND</option>
             <option value="EUR"> EUR</option>
-          </select>
-          <select onChange={this.handleSelect2}>
-            <option value="" defaultValue>
-              Select Option
-            </option>
-            <option value="USD"> USD</option>
-            <option value="INR"> IND</option>
-            <option value="EUR"> EUR</option>
-          </select>
-          <input
-            type="text"
-            value={this.state.amount}
-            onChange={this.handleInput}
-          />
-          <input type="submit" />
+          </select> */}
+          <input type="date" onChange={this.handelchange} />
         </form>
-        {this.state.result}
-      </div>
+        {this.state.imgUrl && <img src={`${this.state.imgUrl}`} alt="img" />}
+      </>
     );
   }
 }
